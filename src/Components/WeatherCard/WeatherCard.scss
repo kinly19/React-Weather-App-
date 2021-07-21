@@ -1,0 +1,76 @@
+.w-card {
+
+    background-color: rgb(164, 221, 223);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+
+    &__title {
+
+        color: rgb(17, 100, 133);
+    }
+
+    &__main { //container
+        background-color: rgb(152, 196, 207);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 80%;
+        height: min-content;
+        padding: 1rem;
+        color: chartreuse;
+    }
+
+    &__leftContent { //container
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 30rem;
+        width: 35%;
+        background-color: slateblue;
+    }
+
+    &__rightContent { //container
+        width: 70%;
+    }
+
+    &__sCard { //container
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        background-color: rgb(152, 196, 207);
+    }
+
+    &__sContent { //container
+        text-align: center;
+        background-color: rgba(125, 166, 177, 0.356);
+        width: 100%;
+        margin: 1rem;
+    }
+
+    &__sIcon {
+        height: 5rem;
+    }
+
+    &__sTitle {
+        color: rgb(211, 125, 13);
+    }
+
+    &__sInfo { //container
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        color: rgb(158, 68, 8);
+    }
+
+    &__sInfoContent {
+       
+        padding: 1rem;
+        margin: 1rem;
+    }
+}
