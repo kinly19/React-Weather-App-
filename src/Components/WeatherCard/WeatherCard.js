@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import './WeatherCard.scss';
 
 const WeatherCard = () => {
@@ -44,6 +45,7 @@ const WeatherCard = () => {
                 setCondition(data.forecast.forecastday[current].day.condition.text);
                 setIcon(data.forecast.forecastday[current].day.condition.icon);
                 setMaxTemp(data.forecast.forecastday[current].day.maxtemp_c)
+
                 setRain(data.forecast.forecastday[current].day.daily_chance_of_rain)
 
                 // console.log(d.getHours(weekday))
@@ -53,10 +55,10 @@ const WeatherCard = () => {
                 if (d.getDate() === localtime.getDate()) { //if the date coming from weather.forecast.forecastday[current].date is equal to devices local time
                     //we set the value of our state to (weather.forecast.forecasteday[current].hour) we use the slice method to copy a portion of that array and use the value from localtime.getHours() as our starting point 
                     setshowHours(data.forecast.forecastday[current].hour.slice(localtime.getHours()))
-
                 } else {
                     setshowHours(data.forecast.forecastday[current].hour.slice(0, 24));
                 }
+
                 // if (d.getDate() === localtime.getDate()) {
                 //     console.log("return spliced hours here ")
 
@@ -89,19 +91,17 @@ const WeatherCard = () => {
                         </div>
 
                         {showHours && (
-                            <div className="w-card__slider">
-                                {showHours.map((hour, index) => { //we take our array and map through and return template
-                                    let d = new Date(hour.time);
 
+                            <div className="w-card__slider">
+
+                                {showHours.map((hour, index) => { //we take our array and map through and return template
+                                    let d = new Date(hour.time); //we need this to change where d should get its time data from so we can take just the time 
                                     return (
-                                        <div className="w-card__hourInfo" key={index}>
-                                            <h2 className="w-card__hour">{d.toLocaleString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false })}</h2>
-                                            <h3 className="w-card__temp">{hour.temp_c}&#8451;</h3>
-                                            <p className="w-card__text">{hour.condition.text}</p>
-                                            <p className="w-card__rain">Rain {hour.chance_of_rain} %</p>
-                                        </div>
+
+                                        <HourlyForecast d={d} hourlyTemp={Math.floor(hour.temp_c)} hourlyFeelTemp={hour.feelslike_c} hourlyCond={hour.condition.text} hourlyRain={hour.chance_of_rain} />
                                     )
                                 })}
+
                             </div>
                         )}
 
@@ -133,8 +133,9 @@ const WeatherCard = () => {
                 </div>
             )}
 
-        </div>
+        </div >
     )
+
 }
 
 export default WeatherCard
