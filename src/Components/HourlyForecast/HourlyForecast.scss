@@ -1,15 +1,13 @@
 .hourlyForecast {
 
-    
    display: flex;
    flex-direction: column;
    flex-shrink: 0;
-
-   background-color: rgba(31, 31, 31, 0.466);
+   
    border-radius: 10%;
-   margin: 1rem;
-   width: 14rem;
-   height: 15rem;
+   margin: 1.3rem;
+   height: 19rem;
+   width: 23rem;
    overflow: hidden;
 
    text-align: center;
@@ -18,50 +16,58 @@
    line-height: 1.8rem;
    letter-spacing: .1rem;
    color: rgb(207, 207, 207);
-   
-        
+     
     &__contentTop { //top content container
 
+        background-color:#fbfcffb7;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         height: 100%;
-        padding: 1rem, 0 , 0, 1rem;
+        padding: 3rem 1rem 1rem 1rem;
+        font-size: 2.5rem;
         font-weight: 300;
+        line-height: 2.6rem;
+        color: #707070;
     }
 
     &__hour {
 
-        font-size: 2.5rem;
+        font-size: 3.8rem;
         letter-spacing: .3rem;
         font-weight: 300;
         margin-bottom: 1rem;
     }
 
+    &__text {
+        font-size: 1.7rem;
+    }
+
     &__contentBottom { //bottom content container
+
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
         background-color: rgba(34, 34, 34, 0.651);
-        height: min-content;
+        height: 10rem; 
         text-transform: uppercase;
     }
 
     &__info { //container
        
-       padding: 1rem;
+       padding: 1rem; 
     }
 
-    
     &__infoTitle {
-        font-size: 1rem;
+
+        font-size: 1.5rem;
         font-weight: 400;
-        letter-spacing: .12rem;
+        letter-spacing: .12rem;   
     }
 
    &__infoText {
-      font-size: 1rem;
+      font-size: 1.5rem;
       font-weight: 300;  
    }
    
