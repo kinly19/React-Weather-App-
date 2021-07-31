@@ -16,6 +16,11 @@
    line-height: 1.8rem;
    letter-spacing: .1rem;
    color: rgb(207, 207, 207);
+
+   &:hover {
+        transform: scale(1.02);
+    }
+    transition: all ease-in-out .2s;
      
     &__contentTop { //top content container
 
