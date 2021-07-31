@@ -1,0 +1,82 @@
+.dailyForecast {
+
+   display: flex;  
+   flex-direction: column;
+   justify-content: center;  
+   background-color: rgba(31, 31, 31, 0.466);
+   border-radius: 7%;
+   width: 23rem;
+   height: 30rem;
+   margin: 3rem;
+   padding: 5rem 1rem 5rem 1rem;
+   text-align: center;
+   font-size: 1.7rem;
+  
+   font-weight: 300;
+   letter-spacing: .1rem;
+   line-height: 5rem;
+   color: rgb(207, 207, 207);
+
+   backdrop-filter: blur(2px);
+   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+   &:hover {
+        transform: scale(1.03);
+        backdrop-filter: blur(3px);
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+   }
+   transition: all ease-in-out .2s;
+
+   &__contentTop {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+   }
+   
+   &__weekday {
+        
+        font-weight: 300;
+        letter-spacing: .3rem;
+        text-transform: uppercase;
+   }
+
+   &__maxTemp {
+        font-size: 4rem;
+        font-weight: 300;
+   }
+
+   &__icon {   
+     height: 6rem;
+     width: 6rem;
+     margin-bottom: .5rem;
+   }
+
+   &__contentBottom {
+        
+        display: flex;
+        justify-content: center;
+        line-height: 2.5rem;    
+   }
+
+   &__info {
+       padding: 1rem;
+   }
+
+   &__infoTitle {
+
+        font-size: 1.9rem;       
+        font-weight: 300;
+        letter-spacing: .2rem; 
+   }
+
+   &__infoText {
+
+      font-size: 1.7rem;
+      font-weight: 300;  
+      letter-spacing: 0;
+   }
+
+}
