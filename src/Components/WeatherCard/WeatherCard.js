@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import DailyForecast from '../DailyForecast/DailyForecast';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import './WeatherCard.scss';
 
@@ -49,8 +50,8 @@ const WeatherCard = () => {
                 setRain(data.forecast.forecastday[current].day.daily_chance_of_rain)
 
                 // console.log(d.getHours(weekday))
-                console.log("useEffect")
-                console.log(d.toLocaleString('en-UK', { hour: 'numeric', hour12: true }))
+                // console.log("useEffect")
+                // console.log(d.toLocaleString('en-UK', { hour: 'numeric', hour12: true }))
 
                 if (d.getDate() === localtime.getDate()) { //if the date coming from weather.forecast.forecastday[current].date is equal to devices local time
                     //we set the value of our state to (weather.forecast.forecasteday[current].hour) we use the slice method to copy a portion of that array and use the value from localtime.getHours() as our starting point 
@@ -67,7 +68,7 @@ const WeatherCard = () => {
                 // }
             })
 
-    }, [current, weekday])
+    }, [current, weekday]);
 
     return (
         <div>
@@ -97,8 +98,12 @@ const WeatherCard = () => {
                                 {showHours.map((hour, index) => { //we take our array and map through and return template
                                     let d = new Date(hour.time); //we need this to change where d should get its time data from so we can take just the time 
                                     return (
-
-                                        <HourlyForecast d={d} hourlyTemp={Math.floor(hour.temp_c)} hourlyFeelTemp={hour.feelslike_c} hourlyCond={hour.condition.text} hourlyRain={hour.chance_of_rain} />
+                                        <HourlyForecast
+                                            d={d} hourlyTemp={Math.floor(hour.temp_c)}
+                                            hourlyFeelTemp={hour.feelslike_c}
+                                            hourlyCond={hour.condition.text}
+                                            hourlyRain={hour.chance_of_rain}
+                                        />
                                     )
                                 })}
 
@@ -113,16 +118,15 @@ const WeatherCard = () => {
 
                                 return (
 
-                                    <div className="w-card__sContent" key={index} onClick={() => (handleClick(index))}>
-
-                                        <img className="w-card__sIcon" src={`${map.day.condition.icon}`} alt="weather icon" />
-                                        <h2 className="w-card__sTitle">{dayName}</h2>
-
-                                        <div className="w-card__sInfo">
-                                            <p className="w-card__sInfoContent">{map.day.mintemp_c}&#8451;</p>
-                                            <p className="w-card__sInfoContent">{map.day.maxtemp_c}&#8451;</p>
-                                        </div>
-                                    </div>
+                                    <DailyForecast
+                                        index={index} //index comes from the .map()
+                                        handleClick={handleClick}
+                                        dailyIcon={map.day.condition.icon}
+                                        dailyWeekday={dayName}
+                                        dailyTemp={Math.floor(map.day.maxtemp_c)}
+                                        dailyMin={Math.floor(map.day.mintemp_c)}
+                                        dailyRain={map.day.daily_chance_of_rain}
+                                    />
                                 )
                             })}
 
