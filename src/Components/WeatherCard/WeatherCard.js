@@ -14,10 +14,9 @@ const WeatherCard = () => {
 
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date. 
-
     let localtime = new Date(); //we are going to use the local device time for splicing through an array 
 
-    const handleClick = (index) => {
+    const handleClick = (index) => { //comes from .map
         setCurrent(index);
         setweekday(weather.[index].date);
     }
@@ -72,18 +71,86 @@ const WeatherCard = () => {
 
                 <div className="w-card">
                     <div className="w-card__main">
-                        <div className="w-card__current">
-                            <div className="w-card__currentInfo1">
-                                <h2 className="w-card__Location">{locationKey}</h2>
-                                <img className="w-card__icon" src={`${weather[current].icon}`}></img>
-                                <p className="w-card__Condition">{weather[current].condition}</p>
-                                <h1 className="w-card__Temp">{weather[current].max} &#8451;</h1>
+
+                        <div className="cw">{/* currentWeather container top*/}
+                            <h1 className="cw__location">London</h1>
+
+                            <div className="cw__contentTop">
+                                <div className="cw__contentTd">
+                                    <h1 className="cw__currentTemp">{weather[current].max}</h1>
+                                    <img className="cw__icon" src={`${weather[current].icon}`}></img>
+                                </div>
+
+                                <h2 className="cw__condition">{weather[current].condition}</h2>
+                                <h2 className="cw__weekday">{days[d.getDay()]} {d.getDay()}/{d.getMonth() + 1}/{d.getFullYear()}</h2>
+                                <h2 className="cw__lastUpdate">last updated 07-08-2021 00:15</h2>
                             </div>
 
-                            <div className="w-card__currentInfo2">
-                                <h1 className="w-card__Day">{days[d.getDay()]}</h1>
-                                <p className="w-card__Date">{d.getDay()}/{d.getMonth() + 1}/{d.getFullYear()} </p>
-                                <p className="w-card__maxTemp">Chance of rain {weather[current].rain}%</p>
+                            <div class="cw__contentBottom"> {/* current weather container bottom*/}
+
+                                <div className="cw__info"> {/* inner container*/}
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title"> Max</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Min</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Rain</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Snow</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">UV</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Humidity</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Feels like</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+                                </div>
+
+                                <div className="cw__info">{/* inner container*/}
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Sunrise</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Sunset</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Moonrise</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Moonset</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+
+                                    <div className="cw__infoItem">
+                                        <h2 className="cw__title">Moon phase</h2>
+                                        <p className="cw__text">test</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
