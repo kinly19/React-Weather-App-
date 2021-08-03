@@ -22,6 +22,13 @@ const WeatherCard = () => {
         setweekday(weather.[index].date);
     }
 
+    const handleCurrentInfo = (currentVal, value) => { //return either current property values from api or values from forecastday[current]
+        if (d.getDay() === localtime.getDay()) {
+            return currentWeather[currentVal];
+        } else {
+            return weather[current][value];
+        }
+    };
     useEffect(() => {
 
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=ef6993d763d541b4812225535211807&q=${locationKey}&days=5&aqi=no&alerts=no`) //fetch data from api 
@@ -83,10 +90,12 @@ const WeatherCard = () => {
                         <div className="cw">{/* currentWeather container top*/}
                             <div className="cw__contentTop">
                                 <h1 className="cw__location">London</h1>
+                                {currentWeather && (
                                 <div className="cw__contentTd">
-                                    <h1 className="cw__currentTemp">{weather[current].max}&#176;C</h1>
+                                        <h1 className="cw__currentTemp">{handleCurrentInfo("temp", "max")}</h1>
                                     <img className="cw__icon" src={`${weather[current].icon}`}></img>
                                 </div>
+                                )}
 
                                 <h2 className="cw__condition">{weather[current].condition}</h2>
                                 <h2 className="cw__weekday">{days[d.getDay()]} {d.getDay()}/{d.getMonth() + 1}/{d.getFullYear()}</h2>
@@ -123,12 +132,12 @@ const WeatherCard = () => {
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Humidity</h2>
-                                        <p className="cw__text">{weather[current].avghumidity}%</p>
+                                        <p className="cw__text">{handleCurrentInfo("humidity", "avghumidity")}%</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Feels like</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{handleCurrentInfo("feelslike", "feelslike")}</p>
                                     </div>
                                 </div>
 
