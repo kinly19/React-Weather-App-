@@ -16,6 +16,7 @@ const WeatherCard = () => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date. 
     let localtime = new Date(); //we are going to use the local device time for splicing through an array 
+    const degreeSign = '\u00B0' + "C"
 
     const handleClick = (index) => { //comes from .map
         setCurrent(index);
