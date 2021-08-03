@@ -43,12 +43,12 @@ const WeatherCard = () => {
             })
 
             .then((res) => { //we set the weather state by .mapping through our res (api data) and returning our own object(seen below), we only use what we need and not the whole object from api. 
-                setWeather(res.forecast.forecastday.map(fcd => {
+                setWeather(res.forecast.forecastday.map(fcd => { //daily weather info
                     return {
                         date: fcd.date, //our object property values 
-                        min: Math.floor(fcd.day.mintemp_c),
-                        max: Math.floor(fcd.day.maxtemp_c),
-                        avg: Math.floor(fcd.day.avgtemp_c),
+                        min: Math.floor(fcd.day.mintemp_c) + degreeSign,
+                        max: Math.floor(fcd.day.maxtemp_c) + degreeSign,
+                        avg: Math.floor(fcd.day.avgtemp_c) + degreeSign,
                         avghumidity: fcd.day.avghumidity,
                         condition: fcd.day.condition.text,
                         uv: fcd.day.uv,
@@ -60,7 +60,8 @@ const WeatherCard = () => {
                         sunset: fcd.astro.sunset,
                         moonrise: fcd.astro.moonrise,
                         moonset: fcd.astro.moonset,
-                        moonphrase: fcd.astro.moon_phase
+                        moonphrase: fcd.astro.moon_phase,
+                        feelslike: "N/A"
                     }
                 }))
 
