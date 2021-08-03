@@ -204,8 +204,8 @@ const WeatherCard = () => {
                                         handleClick={handleClick}
                                         dailyIcon={map.icon}
                                         dailyWeekday={dayName}
-                                        dailyTemp={Math.floor(map.max)}
-                                        dailyMin={Math.floor(map.min)}
+                                        dailyTemp={map.max}
+                                        dailyMin={map.min}
                                         dailyRain={map.rain}
                                     />
                                 )
