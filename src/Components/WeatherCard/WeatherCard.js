@@ -8,6 +8,7 @@ const WeatherCard = () => {
     const [weather, setWeather] = useState(null); //api data object
     const [currentWeather, setCurrentWeather] = useState(null);
     const [weekday, setweekday] = useState(null); //object property - res.forcaste.forecastday[current].date
+    const [lastUpdate, setLastUpdate] = useState(null) //show last updated time and date from res.current.last_updated
     const [current, setCurrent] = useState(0);//change the arrays index inside of res.forecast.forecasteday[current] when user selects between different days
     const [showHours, setshowHours] = useState(null);// we will use this to show us the "hour" array inside of res.forecaste.forecasteday[current].hours
 
@@ -16,7 +17,7 @@ const WeatherCard = () => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date. 
     let localtime = new Date(); //we are going to use the local device time for splicing through an array 
-    const degreeSign = '\u00B0' + "C"
+    let lastUpdated = new Date(lastUpdate);
 
     const handleClick = (index) => { //comes from .map
         setCurrent(index);
@@ -68,7 +69,7 @@ const WeatherCard = () => {
                 setCurrentWeather({ //for current forecast info
                     temp: res.current.temp_c + degreeSign,
                     feelslike: res.current.feelslike_c + degreeSign,
-                    humidity: res.current.humidity
+                    lastupdate: res.current.last_updated
                 });
 
                 if (d.getDate() === localtime.getDate()) { // using the date from (weekday) we check if the date coming from the api data is the same as present (todays)date 
@@ -77,7 +78,7 @@ const WeatherCard = () => {
                     setshowHours(res.forecast.forecastday[current].hour.slice(0, 24));
                 }
 
-                setweekday(res.forecast.forecastday[current].date) //gives us a date value we can pass into d 
+                setLastUpdate(res.current.last_updated);
             })
 
     }, [current, weekday]);
@@ -100,8 +101,7 @@ const WeatherCard = () => {
                                 )}
 
                                 <h2 className="cw__condition">{weather[current].condition}</h2>
-                                <h2 className="cw__weekday">{days[d.getDay()]} {d.getDay()}/{d.getMonth() + 1}/{d.getFullYear()}</h2>
-                                <h2 className="cw__lastUpdate">last updated 07-08-2021 00:15</h2>
+                                <h2 className="cw__lastUpdate">Last updated {lastUpdated.toUTCString()}</h2>
                             </div>
 
                             <div class="cw__contentBottom"> {/* current weather container bottom*/}
