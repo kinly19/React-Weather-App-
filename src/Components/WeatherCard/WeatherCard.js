@@ -37,9 +37,9 @@ const WeatherCard = () => {
                 setWeather(res.forecast.forecastday.map(fcd => {
                     return {
                         date: fcd.date, //our object property values 
-                        min: fcd.day.mintemp_c,
-                        max: fcd.day.maxtemp_c,
-                        avg: fcd.day.avgtemp_c,
+                        min: Math.floor(fcd.day.mintemp_c),
+                        max: Math.floor(fcd.day.maxtemp_c),
+                        avg: Math.floor(fcd.day.avgtemp_c),
                         avghumidity: fcd.day.avghumidity,
                         condition: fcd.day.condition.text,
                         uv: fcd.day.uv,
@@ -50,7 +50,8 @@ const WeatherCard = () => {
                         sunrise: fcd.astro.sunrise,
                         sunset: fcd.astro.sunset,
                         moonrise: fcd.astro.moonrise,
-                        moonset: fcd.astro.moonset
+                        moonset: fcd.astro.moonset,
+                        moonphrase: fcd.astro.moon_phase
                     }
                 }))
 
@@ -73,11 +74,10 @@ const WeatherCard = () => {
                     <div className="w-card__main">
 
                         <div className="cw">{/* currentWeather container top*/}
-                            <h1 className="cw__location">London</h1>
-
                             <div className="cw__contentTop">
+                                <h1 className="cw__location">London</h1>
                                 <div className="cw__contentTd">
-                                    <h1 className="cw__currentTemp">{weather[current].max}</h1>
+                                    <h1 className="cw__currentTemp">{weather[current].max}&#176;C</h1>
                                     <img className="cw__icon" src={`${weather[current].icon}`}></img>
                                 </div>
 
@@ -91,32 +91,32 @@ const WeatherCard = () => {
                                 <div className="cw__info"> {/* inner container*/}
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title"> Max</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].max}&#176;C</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Min</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].min}&#176;C</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Rain</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].rain}%</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Snow</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].snow}%</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">UV</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].uv}</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Humidity</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].avghumidity}%</p>
                                     </div>
 
                                     <div className="cw__infoItem">
@@ -128,27 +128,27 @@ const WeatherCard = () => {
                                 <div className="cw__info">{/* inner container*/}
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Sunrise</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].sunrise}</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Sunset</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].sunset}</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Moonrise</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].moonrise}</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Moonset</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].moonset}</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Moon phase</h2>
-                                        <p className="cw__text">test</p>
+                                        <p className="cw__text">{weather[current].moonphrase}</p>
                                     </div>
                                 </div>
                             </div>
