@@ -6,6 +6,7 @@ import './WeatherCard.scss';
 const WeatherCard = () => {
 
     const [weather, setWeather] = useState(null); //api data object
+    const [currentWeather, setCurrentWeather] = useState(null);
     const [weekday, setweekday] = useState(null); //object property - res.forcaste.forecastday[current].date
     const [current, setCurrent] = useState(0);//change the arrays index inside of res.forecast.forecasteday[current] when user selects between different days
     const [showHours, setshowHours] = useState(null);// we will use this to show us the "hour" array inside of res.forecaste.forecasteday[current].hours
@@ -54,6 +55,12 @@ const WeatherCard = () => {
                         moonphrase: fcd.astro.moon_phase
                     }
                 }))
+
+                setCurrentWeather({ //for current forecast info
+                    temp: res.current.temp_c + degreeSign,
+                    feelslike: res.current.feelslike_c + degreeSign,
+                    humidity: res.current.humidity
+                });
 
                 if (d.getDate() === localtime.getDate()) { // using the date from (weekday) we check if the date coming from the api data is the same as present (todays)date 
                     setshowHours(res.forecast.forecastday[current].hour.slice(localtime.getHours())) //for the present day we show hourly forecast from current time onwards
