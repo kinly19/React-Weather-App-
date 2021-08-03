@@ -13,13 +13,14 @@ const WeatherCard = () => {
     const [showHours, setshowHours] = useState(null);// we will use this to show us the "hour" array inside of res.forecaste.forecasteday[current].hours
 
     const locationKey = 'London'; //api location
+    const degreeSign = '\u00B0' + "C" //unicode symbol
 
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date. 
-    let localtime = new Date(); //we are going to use the local device time for splicing through an array 
+    let localtime = new Date(); //we are going to use the local device time for splicing through an array
     let lastUpdated = new Date(lastUpdate);
 
-    const handleClick = (index) => { //comes from .map
+    const handleClick = (index) => { //index comes from .map
         setCurrent(index);
         setweekday(weather.[index].date);
     }
@@ -31,6 +32,7 @@ const WeatherCard = () => {
             return weather[current][value];
         }
     };
+
     useEffect(() => {
 
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=ef6993d763d541b4812225535211807&q=${locationKey}&days=5&aqi=no&alerts=no`) //fetch data from api 
@@ -69,6 +71,7 @@ const WeatherCard = () => {
                 setCurrentWeather({ //for current forecast info
                     temp: res.current.temp_c + degreeSign,
                     feelslike: res.current.feelslike_c + degreeSign,
+                    humidity: res.current.humidity,
                     lastupdate: res.current.last_updated
                 });
 
@@ -78,6 +81,7 @@ const WeatherCard = () => {
                     setshowHours(res.forecast.forecastday[current].hour.slice(0, 24));
                 }
 
+                setweekday(res.forecast.forecastday[current].date); //gives us a date value we can pass into d 
                 setLastUpdate(res.current.last_updated);
             })
 
@@ -92,15 +96,14 @@ const WeatherCard = () => {
 
                         <div className="cw">{/* currentWeather container top*/}
                             <div className="cw__contentTop">
-                                <h1 className="cw__location">London</h1>
-                                {currentWeather && (
+                                <h1 className="cw__location">{locationKey}</h1>
                                 <div className="cw__contentTd">
-                                        <h1 className="cw__currentTemp">{handleCurrentInfo("temp", "max")}</h1>
+                                    <h1 className="cw__currentTemp">{handleCurrentInfo("temp", "max")}</h1>
                                     <img className="cw__icon" src={`${weather[current].icon}`}></img>
                                 </div>
-                                )}
 
                                 <h2 className="cw__condition">{weather[current].condition}</h2>
+                                <h2 className="cw__weekday">{d.toDateString()}</h2>
                                 <h2 className="cw__lastUpdate">Last updated {lastUpdated.toUTCString()}</h2>
                             </div>
 
@@ -109,12 +112,12 @@ const WeatherCard = () => {
                                 <div className="cw__info"> {/* inner container*/}
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title"> Max</h2>
-                                        <p className="cw__text">{weather[current].max}&#176;C</p>
+                                        <p className="cw__text">{weather[current].max}</p>
                                     </div>
 
                                     <div className="cw__infoItem">
                                         <h2 className="cw__title">Min</h2>
-                                        <p className="cw__text">{weather[current].min}&#176;C</p>
+                                        <p className="cw__text">{weather[current].min}</p>
                                     </div>
 
                                     <div className="cw__infoItem">
