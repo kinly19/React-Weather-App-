@@ -15,7 +15,6 @@ const WeatherCard = () => {
     const [locationKey, setLocationKey] = useState('London');//api location
     const [inputValue, setInputValue] = useState('');
     const degreeSign = '\u00B0' + "C" //unicode symbol
-
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date. 
     let localtime = new Date(); //we are going to use the local device time for splicing through an array
@@ -111,12 +110,15 @@ const WeatherCard = () => {
                 </form>
             </div>
 
+            {weather, currentWeather && (
+
                 <div className="w-card">
                     <div className="w-card__main">
 
                         <div className="cw">{/* currentWeather container top*/}
                             <div className="cw__contentTop">
-                                <h1 className="cw__location">{locationKey}</h1>
+                                <h1 className="cw__location">{currentWeather.locationName}</h1>
+                                <p>{currentWeather.region}</p>
                                 <div className="cw__contentTd">
                                     <h1 className="cw__currentTemp">{handleCurrentInfo("temp", "max")}</h1>
                                     <img className="cw__icon" src={`${weather[current].icon}`}></img>
@@ -126,8 +128,7 @@ const WeatherCard = () => {
                                 <h2 className="cw__weekday">{d.toDateString()}</h2>
                                 <h2 className="cw__lastUpdate">Last updated {lastUpdated.toUTCString()}</h2>
                             </div>
-
-                            <div class="cw__contentBottom"> {/* current weather container bottom*/}
+                            <div className="cw__contentBottom"> {/* current weather container bottom*/}
 
                                 <div className="cw__info"> {/* inner container*/}
                                     <div className="cw__infoItem">
