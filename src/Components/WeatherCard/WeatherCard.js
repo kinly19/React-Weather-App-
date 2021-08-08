@@ -78,7 +78,10 @@ const WeatherCard = () => {
                     temp: res.current.temp_c + degreeSign,
                     feelslike: res.current.feelslike_c + degreeSign,
                     humidity: res.current.humidity,
-                    lastupdate: res.current.last_updated
+                    lastupdate: res.current.last_updated,
+                    country: res.location.country,
+                    locationName: res.location.name,
+                    region: res.location.region,
                 });
 
                 if (d.getDate() === localtime.getDate()) { // using the date from (weekday) we check if the date coming from the api data is the same as present (todays)date 
