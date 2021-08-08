@@ -12,7 +12,8 @@ const WeatherCard = () => {
     const [current, setCurrent] = useState(0);//change the arrays index inside of res.forecast.forecasteday[current] when user selects between different days
     const [showHours, setshowHours] = useState(null);// we will use this to show us the "hour" array inside of res.forecaste.forecasteday[current].hours
 
-    const locationKey = 'London'; //api location
+    const [locationKey, setLocationKey] = useState('London');//api location
+    const [inputValue, setInputValue] = useState('');
     const degreeSign = '\u00B0' + "C" //unicode symbol
 
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -22,7 +23,12 @@ const WeatherCard = () => {
 
     const handleClick = (index) => { //index comes from .map
         setCurrent(index);
-        setweekday(weather.[index].date);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setLocationKey(inputValue);
+        setInputValue("")//so form input value reverts back to blank
     }
 
     const handleCurrentInfo = (currentVal, value) => { //return either current property values from api or values from forecastday[current]
@@ -85,11 +91,22 @@ const WeatherCard = () => {
                 setLastUpdate(res.current.last_updated);
             })
 
-    }, [current, weekday]);
+    }, [current, weekday, locationKey]);
 
     return (
         <div>
-            {weather && (
+            <div className="w-card__form">
+                <form onSubmit={handleSubmit}>
+                    <label>Enter city</label>
+                    <input
+                        type="sumbit"
+                        required
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                    />
+                    <button>click</button>
+                </form>
+            </div>
 
                 <div className="w-card">
                     <div className="w-card__main">
