@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import DailyForecast from '../DailyForecast/DailyForecast';
+import DailyForecastSm from '../DailyForecastSm/DailyForecastSm';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import './WeatherCard.scss';
 
@@ -118,7 +118,7 @@ const WeatherCard = () => {
                         <div className="cw">{/* currentWeather container top*/}
                             <div className="cw__contentTop">
                                 <h1 className="cw__location">{currentWeather.locationName}</h1>
-                                <p>{currentWeather.region}</p>
+                                <p className="cw__region">{currentWeather.region}</p>
                                 <div className="cw__contentTd">
                                     <h1 className="cw__currentTemp">{handleCurrentInfo("temp", "max")}</h1>
                                     <img className="cw__icon" src={`${weather[current].icon}`}></img>
@@ -223,11 +223,12 @@ const WeatherCard = () => {
 
                                 return (
 
-                                    <DailyForecast
+                                    <DailyForecastSm
                                         index={index} //index comes from the .map()
                                         handleClick={handleClick}
                                         dailyIcon={map.icon}
                                         dailyWeekday={dayName}
+                                        avgTemp={map.avg}
                                         dailyTemp={map.max}
                                         dailyMin={map.min}
                                         dailyRain={map.rain}
