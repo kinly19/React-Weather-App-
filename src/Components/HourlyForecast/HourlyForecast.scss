@@ -78,3 +78,49 @@
    
 }
 
+@media only screen and (max-width: 59.625rem) {
+    
+    .hourlyForecast {
+
+        height: 30rem;
+        border-radius: 0;
+        margin: 2px;
+
+        &__contentTop { //top content container
+
+            justify-content: flex-start;
+            height: 20rem;
+            padding-top: 6rem;
+        }
+    
+        &__hour {
+            margin-bottom: 2rem;
+        }
+    
+        &__text {
+            font-size: 1.7rem;
+        }
+    
+        &__contentBottom { //bottom content container
+            height: 8rem; 
+        }
+    
+        &__info { //container 
+           padding: 2.5rem; 
+           line-height: 2.5rem;
+        }
+    
+        &__infoTitle {
+            font-size: 1.8rem;
+            letter-spacing: .12rem;   
+        }
+    
+       &__infoText {
+          font-size: 1.7rem;
+       }
+ 
+    }
+}
+
+
+
