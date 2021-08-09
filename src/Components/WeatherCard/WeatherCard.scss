@@ -29,6 +29,10 @@
         background-position: center;
         color: rgb(240, 240, 240);
         overflow: hidden;
+
+        @media only screen and (max-width: 59.625rem) {
+            padding: 3rem 0 3rem 0 ;
+        }
     }
 
     &__slider { //container
@@ -40,6 +44,15 @@
         overflow:scroll ;
         overflow-y: hidden;
         height: 30rem;
+
+        @media only screen and (max-width:59.625rem) {
+            width: 80%;
+        }
+
+        @media only screen and (max-width:33.125rem) {
+            width: 100%;
+            margin-top: 5rem;
+        }
     }
 
     &__sCard { //container
@@ -47,6 +60,12 @@
         width: 100%;
         justify-content: center;
         color: rgb(207, 207, 207);
+        margin-top: 3rem;
+
+        @media only screen and (max-width: 59.625rem) {
+           flex-direction: column;
+           align-items: center;
+         }
     }
 
     &__sContent { //container
@@ -57,7 +76,6 @@
 // new block
 .cw { //main container
 
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,7 +94,7 @@
         justify-content: space-between;
         height: 35rem;
         width: 100%;
-        padding: 5rem 0 5rem 0;
+        padding: 3rem 2rem 3rem 2rem;
         font-size: 2.5rem;  
         background-color: rgba(34, 34, 34, 0.651);
         backdrop-filter: blur(3px);
@@ -84,15 +102,20 @@
 
     &__location {
 
-        font-size: 6rem;
+        font-size: 5rem;
         font-weight: 300;
-        letter-spacing: .25rem;
+        letter-spacing: .10rem;
         text-transform: uppercase;
+    }
+
+    &__region {
+        font-size: 2.2rem;
+        font-weight: 200;
     }
     
     &__contentTd {
         display: flex;
-        align-items: center;
+        // align-items: center;
         justify-content: center;
         font-size: 3.7rem;
     }
@@ -122,7 +145,7 @@
     &__weekday {
 
         text-transform: capitalize;
-        font-size: 2rem;
+        font-size: 2.5rem;
         font-weight: 300;
         letter-spacing: .10rem;
     }
@@ -165,5 +188,31 @@
     &__text {
         font-size: 1.5rem;
     }
+}
+
+@media only screen and (max-width:33.125rem) {
+    .cw {
+        width: 100%;
+        border-radius: 0;
+        text-align: left;
+
+        &__contentTop {
+            align-items: flex-start;
+            padding: 3rem 2rem 3rem 7rem;
+        }
+
+        &__info {//child container of above
+            flex-flow: wrap;
+            justify-content: flex-start;
+        } 
+
+        &__title {
+            font-size: 1.9rem;
+        }
+    
+        &__text {
+            font-size: 1.8rem;
+        }
+    }       
 }
  
