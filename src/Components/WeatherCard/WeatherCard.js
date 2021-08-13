@@ -5,15 +5,15 @@ import './WeatherCard.scss';
 
 const WeatherCard = () => {
 
-    const [weather, setWeather] = useState(null); //api data object
-    const [currentWeather, setCurrentWeather] = useState(null);
+    const [weather, setWeather] = useState(null); //api data object for daily forecaste
+    const [currentWeather, setCurrentWeather] = useState(null);//api data object for current forecast
     const [weekday, setweekday] = useState(null); //object property - res.forcaste.forecastday[current].date
     const [lastUpdate, setLastUpdate] = useState(null) //show last updated time and date from res.current.last_updated
     const [current, setCurrent] = useState(0);//change the arrays index inside of res.forecast.forecasteday[current] when user selects between different days
     const [showHours, setshowHours] = useState(null);// we will use this to show us the "hour" array inside of res.forecaste.forecasteday[current].hours
 
     const [locationKey, setLocationKey] = useState('London');//api location
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState('');//this will take the users input value to setLocationKey(inputValue)
     const degreeSign = '\u00B0' + "C" //unicode symbol
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date. 
