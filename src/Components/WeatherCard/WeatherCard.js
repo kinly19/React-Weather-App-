@@ -20,6 +20,7 @@ const WeatherCard = () => {
     let localtime = new Date(); //we are going to use the local device time for splicing through an array
     let lastUpdated = new Date(lastUpdate);
 
+    const [error, setError] = useState(null); //use this to output any errors to user
     const handleClick = (index) => { //index comes from .map
         setCurrent(index);
     }
@@ -51,6 +52,7 @@ const WeatherCard = () => {
             })
 
             .then((res) => { //we set the weather state by .mapping through our res (api data) and returning our own object(seen below), we only use what we need and not the whole object from api. 
+                setError(null)
                 setWeather(res.forecast.forecastday.map(fcd => { //daily weather info
                     return {
                         date: fcd.date, //our object property values 
@@ -91,6 +93,10 @@ const WeatherCard = () => {
 
                 setweekday(res.forecast.forecastday[current].date); //gives us a date value we can pass into d 
                 setLastUpdate(res.current.last_updated);
+            })
+
+            .catch(err => { //catch any error
+                setError(err.message);
             })
 
     }, [current, weekday, locationKey]);
