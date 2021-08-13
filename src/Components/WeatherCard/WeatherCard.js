@@ -39,7 +39,7 @@ const WeatherCard = () => {
         }
     };
 
-    useEffect(() => {
+    useEffect(() => { //useEffect for api call, locationKey as dependency to re-render api call when changed
 
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=ef6993d763d541b4812225535211807&q=${locationKey}&days=5&aqi=no&alerts=no`) //fetch data from api 
 
@@ -83,23 +83,30 @@ const WeatherCard = () => {
                     country: res.location.country,
                     locationName: res.location.name,
                     region: res.location.region,
-                });
-
-                if (d.getDate() === localtime.getDate()) { // using the date from (weekday) we check if the date coming from the api data is the same as present (todays)date 
-                    setshowHours(res.forecast.forecastday[current].hour.slice(localtime.getHours())) //for the present day we show hourly forecast from current time onwards
-                } else {
-                    setshowHours(res.forecast.forecastday[current].hour.slice(0, 24));
-                }
-
-                setweekday(res.forecast.forecastday[current].date); //gives us a date value we can pass into d 
-                setLastUpdate(res.current.last_updated);
+                })
             })
 
             .catch(err => { //catch any error
                 setError(err.message);
-            })
+                });
 
-    }, [current, weekday, locationKey]);
+    }, [locationKey]);
+
+    useEffect(() => { //serperate useEffect to set and update our states without rendering api call again.
+
+        if (weather && currentWeather) {
+
+                if (d.getDate() === localtime.getDate()) { // using the date from (weekday) we check if the date coming from the api data is the same as present (todays)date 
+                setshowHours(weather[current].hourly.slice(localtime.getHours())) //for the present day we show hourly forecast from current time onwards
+                } else {
+                setshowHours(weather[current].hourly.slice(0, 24));
+                }
+
+            setweekday(weather[current].date); //gives us a date value we can pass into d 
+            setLastUpdate(currentWeather.lastupdate);
+        }
+
+    }, [weather, currentWeather, current, weekday]);
 
     return (
         <div>
