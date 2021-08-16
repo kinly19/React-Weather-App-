@@ -48,7 +48,7 @@ const WeatherCard = () => {
 
     useEffect(() => { //useEffect for api call, locationKey as dependency to re-render api call when changed
 
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=ef6993d763d541b4812225535211807&q=${locationKey}&days=5&aqi=no&alerts=no`) //fetch data from api 
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=ef6993d763d541b4812225535211807&q=${locationKey}&days=5&aqi=no&alerts=no`) //fetch data from api 
 
             .then(res => {
                 if (!res.ok) {
