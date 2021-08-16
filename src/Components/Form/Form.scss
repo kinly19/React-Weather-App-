@@ -9,10 +9,12 @@
  color: #707070;
 
  @media only screen and (max-width: 33.125rem) {
-   background-color:rgb(251, 252, 255,43%);
+   background-color: rgba(34,34,34,.651);
+   align-items: flex-start;
    width: 100vw;
    height: 10rem;
-   padding: 1rem;
+   padding: 1rem 0 1rem 6rem ;
+
  }
  
    &__content{
@@ -30,6 +32,12 @@
          transform: scale(1.01);
       }
 
+      @media only screen and (max-width: 33.125rem) {
+         height: 4rem;
+         border-radius: 12px;
+         
+       }
+   
    }
 
    &__title {
@@ -50,10 +58,18 @@
       &:focus {
          background-color: #e0e0e0da; 
       }
+
+      @media only screen and (max-width: 33.125rem) {
+         height: 100%;
+         
+       }
    }
 
    &__btn {
        
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 4rem;
       height: 3rem;
       border: none;
@@ -75,6 +91,10 @@
             }
          } 
       }
+      @media only screen and (max-width: 33.125rem) {
+         height: 100%;
+         
+       }
    }
 
    &__icon {
