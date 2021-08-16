@@ -1,4 +1,5 @@
 .linkBack {
+    
     background-color: #fbfcffb7;
     display: flex;
     justify-content: center;
@@ -7,10 +8,19 @@
     padding: 2rem;
 
     &__items {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
 
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 20rem;
+    }
+
+    p {
+        font-size: 1.3rem; 
+    }
+
+    img {
+        height: 4rem;
     }
 }
