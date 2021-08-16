@@ -5,9 +5,7 @@ import Test from "./Test";
 function App() {
   return (
     <div className="App">
-
       <WeatherCard />
-      <Test />
     </div>
   );
 }
