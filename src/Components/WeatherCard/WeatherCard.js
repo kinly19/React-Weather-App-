@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import DailyForecastSm from '../DailyForecastSm/DailyForecastSm';
+import Footer from '../Footer';
 import Form from '../Form/Form';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import './WeatherCard.scss';
@@ -254,6 +255,7 @@ const WeatherCard = () => {
                 </div>
             )}
 
+            <Footer />
         </div>
 
 
