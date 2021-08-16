@@ -41,6 +41,10 @@ const WeatherCard = () => {
         }
     };
 
+    const ScrollToTop = () => {
+        window.scrollTo(0, 0);
+    };
+
     useEffect(() => { //useEffect for api call, locationKey as dependency to re-render api call when changed
 
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=ef6993d763d541b4812225535211807&q=${locationKey}&days=5&aqi=no&alerts=no`) //fetch data from api 
@@ -224,7 +228,7 @@ const WeatherCard = () => {
                         </div>
                     )}
 
-                    <div className="w-card__sCard">
+                    <div className="w-card__sCard" onClick={ScrollToTop}>
                         {weather.map((map, index) => {
 
                             let d = new Date(map.date); // map.date = weather.forecast.forecaste[].date
