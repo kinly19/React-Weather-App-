@@ -24,7 +24,7 @@
         height: min-content;
         width: 100%;
         min-height: 100vh;
-        padding: 5% 10% 5% 10%;
+        padding: 2% 10% 5% 10%;
         background-size: cover;
         background-position: center;
         color: rgb(240, 240, 240);
@@ -32,6 +32,10 @@
 
         @media only screen and (max-width: 59.625rem) {
             padding: 3rem 0 3rem 0 ;
+        }
+
+        @media only screen and (max-width: 33.125rem) {
+            padding-top: 0;
         }
     }
 
