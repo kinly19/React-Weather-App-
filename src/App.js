@@ -1,6 +1,4 @@
 import WeatherCard from "./Components/WeatherCard";
-import Test from "./Test";
-
 
 function App() {
   return (
