@@ -8,7 +8,7 @@ const CurrentWeather = ({ currentWeather, weather, handleCurrentInfo, current, l
                 <p className="cw__region">{currentWeather.region}</p>{/* currentWeather */}
                 <div className="cw__contentTd">
                     <h1 className="cw__currentTemp">{handleCurrentInfo("temp", "max")}</h1>
-                    <img className="cw__icon" src={`${weather[current].icon}`}></img> {/*Weather */}
+                    <img className="cw__icon" src={`${weather[current].icon}`} alt="weather-icon"></img> {/*Weather */}
                 </div>
 
                 <h2 className="cw__condition">{weather[current].condition}</h2>{/*Weather */}
