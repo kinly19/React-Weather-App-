@@ -2,9 +2,9 @@ import { FiSearch } from 'react-icons/fi';
 // import { IconContext } from 'react-icons/lib';
 import './Form.scss'
 
-const Form = ({ handleSubmit, error, inputValue, setInputValue, }) => {
+const Form = ({ className, handleSubmit, error, inputValue, setInputValue, }) => {
     return (
-        <div className="form">
+        <div className={className}>
             <form className="form__content" onSubmit={handleSubmit}>
                 <input
                     className="form__input"
