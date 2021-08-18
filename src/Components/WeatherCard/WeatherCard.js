@@ -115,6 +115,20 @@ const WeatherCard = () => {
 
     }, [weather, currentWeather, current, weekday]);
 
+    useEffect(() => { //get current position of users location with Geolocation, using lat and long values to be passed into LocationKey()
+
+        const success = (position) => {
+            const userPosition = position.coords;
+            setLocationKey(`${userPosition.latitude},${userPosition.longitude}`);
+        }
+
+        const onError = (position) => {
+            console.log(`${position.message}`);
+        }
+        navigator.geolocation.getCurrentPosition(success, onError);
+
+    }, []);
+
     return (
 
         <div className="w-card">
