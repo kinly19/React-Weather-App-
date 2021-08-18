@@ -134,15 +134,18 @@ const WeatherCard = () => {
     return (
 
         <div className="w-card">
+            {!weather && (
             <div className="w-card__form">
                 <Form
+                        className="form--large"
                     handleSubmit={handleSubmit}
                     error={error}
                     inputValue={inputValue}
-                    weather={weather}
+                        weather={weather} //not needed
                     setInputValue={setInputValue}
                 />
             </div>
+            )}
             {weather, currentWeather && (
                 <div className="w-card__main">
 
