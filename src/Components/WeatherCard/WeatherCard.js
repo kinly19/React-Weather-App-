@@ -113,6 +113,7 @@ const WeatherCard = () => {
 
             setweekday(weather[current].date); //gives us a date value we can pass into d 
             setLastUpdate(currentWeather.lastupdate);
+            ScrollToTop();
         }
 
     }, [weather, currentWeather, current, weekday]);
