@@ -37,7 +37,7 @@
         font-weight: 200;
     }
     
-    &__contentTd {
+    &__contentTd { //container
         display: flex;
         // align-items: center;
         justify-content: center;
@@ -52,10 +52,6 @@
 
     &__currentTemp {
         font-weight: 400;
-    }
-
-    &__day {
-        font-weight: 300;
     }
 
     &__condition {
@@ -95,7 +91,7 @@
         margin: 1rem;
     } 
 
-    &__infoItem {
+    &__infoItem { //container
         display: flex;
         flex-direction: column;
         padding: 1rem;
@@ -116,26 +112,135 @@
 
 @media only screen and (max-width:33.125rem) {
     .cw {
+        
+        height: max-content;
         width: 100%;
         border-radius: 0;
         text-align: left;
 
-        &__contentTop {
+        &__contentTop { //container
+
+            justify-content: space-between;
+            min-height: 50vh;
             align-items: flex-start;
-            padding: 3rem 2rem 3rem 6rem;
+            padding: 10vh 2rem 10vh 6rem;
         }
 
-        &__info {//child container of above
+        &__location {
+            font-size: 5.5rem;
+        }
+    
+        &__region {
+            font-size: 2.5rem;
+        }
+        
+        &__contentTd { //container
+            font-size: 4rem;
+        }
+    
+        &__icon {
+            height:9rem ;
+            width:9rem ;
+            margin-left: 2rem;
+        }
+    
+        &__condition {
+            font-size: 2.5rem;
+        }
+    
+        &__weekday {        
+            font-size: 2.5rem;
+        }
+    
+        &__lastUpdate {
+            font-size: 1.8rem;
+        }
+
+        &__contentBottom { //container
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 50vh;
+            padding: 5% 2rem 5% 3rem;
+        }
+
+        &__info { //container
+ 
             flex-flow: wrap;
             justify-content: flex-start;
+            margin-bottom: 1rem;
         } 
 
+        &__infoItem { //container
+           padding: 1.5rem;
+        }
+
         &__title {
-            font-size: 1.9rem;
+            font-size: 2.1rem;
+            line-height: 3rem;
+        }
+    
+        &__text {
+            font-size: 2rem;
+        }
+        
+    }
+}
+
+@media only screen and (max-width:20rem) {
+    
+    .cw {
+
+        &__contentTop { //container
+            padding: 7vh 2rem 7vh 6rem;
+        }
+
+        &__location {
+            font-size: 4.5rem;
+        }
+    
+        &__region {
+            font-size: 2.1rem;
+        }
+        
+        &__contentTd { //container
+            font-size: 3rem;
+        }
+    
+        &__icon {
+            height:7rem ;
+            width:7rem ;
+            margin-left: 2rem;
+        }
+    
+        &__condition {
+            font-size: 2rem;
+        }
+    
+        &__weekday {        
+            font-size: 2.3rem;
+        }
+    
+        &__lastUpdate {
+            font-size: 1.5rem;
+        }
+        
+        &__info { //container
+
+            margin-bottom: .5rem;
+        } 
+
+        &__infoItem { //container
+           padding: 1rem;
+        }
+
+        &__title {
+            font-size: 2rem;
         }
     
         &__text {
             font-size: 1.8rem;
         }
-    }       
+    }
 }
