@@ -1,28 +1,29 @@
 .form { // container
 
- background-color: none;
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- padding-top:3rem;
- color: #707070;
-
- &--large {
-   height: 100vh;
    display: flex;
+   flex-direction: column;
+   justify-content: center;
    align-items: center;
- }
+   padding-top:3rem;
+   color: #707070;
 
- @media only screen and (max-width: 33.125rem) {
+   &--large {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+   }
 
-   background-color: rgba(34,34,34,.651);
-   align-items: flex-start;
-   width: 100vw;
-   height: 10rem;
-   padding: 1rem 0 1rem 6rem ;
+   @media only screen and (max-width: 33.125rem) {
 
- }
+      background-color: rgba(34,34,34,.651);
+      align-items: flex-start;
+      width: 100vw;
+      height: 10rem;
+      padding: 1rem 0 1rem 6rem ;
+
+   }
  
    &__content{
 
@@ -34,17 +35,16 @@
       border: 1px solid #a1a1a1e7;
       border-radius: 10px;
       overflow: hidden;
+      margin-bottom: 1rem;
 
       &:hover {
          transform: scale(1.01);
       }
 
       @media only screen and (max-width: 33.125rem) {
-         height: 4rem;
+         height: 5rem;
          border-radius: 12px;
-         
-       }
-   
+      }
    }
 
    &__title {
@@ -66,9 +66,8 @@
       }
 
       @media only screen and (max-width: 33.125rem) {
-         height: 100%;
-         
-       }
+         height: 100%;   
+      }
    }
 
    &__btn {
@@ -98,9 +97,8 @@
          } 
       }
       @media only screen and (max-width: 33.125rem) {
-         height: 100%;
-         
-       }
+         height: 100%;   
+      }
    }
 
    &__icon {
@@ -111,7 +109,6 @@
    }
 
    &__errorContent {
-
       padding: 1rem;
       color: rgb(180, 12, 12);
    }
@@ -121,16 +118,20 @@
       background-color: #fbfcffb7; 
       display: flex;
       align-items: center;
+      justify-content: center;
       height: 3rem;
       width: 34rem;
       border-radius: 10px;
-   }
+      padding: 1rem;
+      color: rgb(180, 12, 12);
+      font-size: 1.2rem;
 
-   &__errorText {
-      color: rgb(224, 24, 24);
-      font-size: 1.2em;
+      @media only screen and (max-width: 33.125rem) {
+         height: 5rem;
+         border-radius: 12px;
+         font-size: 1.5rem;   
+       }  
    }
-
 }
 
 :focus-visible {
