@@ -2,7 +2,6 @@
 
     display: flex;
     flex-direction: row;
-    // justify-content: space-evenly;
     align-items: center;
     height: 15rem;
     width: 53rem;
@@ -30,10 +29,10 @@
     }
 
     &__weekday {
-         font-size: 2.5rem;
-         letter-spacing: .30rem;
-         font-weight: 400;
-         text-transform: uppercase;
+        font-size: 2.5rem;
+        letter-spacing: .30rem;
+        font-weight: 400;
+        text-transform: uppercase;
     }
 
     &__infoContent{
@@ -54,10 +53,6 @@
     &__infoText {
         font-size: 1.7rem;
     }
-
-    &__infoContent { //container
-
-    }
     
     &__contentRight { //container
 
@@ -65,7 +60,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: baseline;
+        justify-content: center;
         height: 100%;
         width: 30%;
         padding: 2rem;
@@ -81,11 +76,71 @@
         font-size: 2.9rem;
     }
  
- }
+}
 
- @media only screen and (max-width: 33.125rem) {
+@media only screen and (max-width: 93.75rem) {
+
+    .dailyForecastSm {
+
+        &__contentRight {
+            padding: 1rem;
+        }
+
+        &__weekday {
+            font-size: 2.2rem;  
+        }
+
+       &__infoTitle {
+           font-size: 1.7rem;
+        }
+
+       &__infoText {
+           letter-spacing: 0;
+        }
+
+       &__icon {   
+          height: 5.5rem;
+          width: 5.5rem;
+        }
+  
+      &__maxTemp {
+           font-size: 2.5rem;
+        }
+       
+    }
+}
+
+@media only screen and (max-width:59.625rem) {
+
+    .dailyForecastSm {
+
+        &__weekday {
+            font-size: 2.5rem; 
+        }
+
+       &__infoTitle {
+            font-size: 2rem;
+        }
+
+       &__infoText {
+           letter-spacing: 0.2rem;
+        }
+
+        &__icon {   
+            height: 6.5rem;
+            width: 6.5rem;
+        }
+      
+        &__maxTemp {
+            font-size: 2.9rem;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 33.125rem) {
     .dailyForecastSm {
         width: 100%;
         margin: .5rem;
     }
- }
+}
