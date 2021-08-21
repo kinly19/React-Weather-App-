@@ -5,6 +5,9 @@ import Footer from '../Footer';
 import Form from '../Form/Form';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import './WeatherCard.scss';
+import MorningBeach from '../../Assets/Images/MorningBeach.jpg'
+import NightMountain from '../../Assets/Images/NightMountain.jpg'
+
 
 const WeatherCard = () => {
 
@@ -24,6 +27,17 @@ const WeatherCard = () => {
     let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date. 
     let localtime = new Date(); //we are going to use the local device time for splicing through an array
     let lastUpdated = new Date(lastUpdate);
+
+    const img = [
+        MorningBeach,
+        NightMountain
+    ];
+
+    const [BackgroundImage, setBackgroundImage] = useState('');
+
+    const backGround = {
+        backgroundImage: `linear-gradient(181deg, #1d1d1da6, #00000061),url(${BackgroundImage})` //set background styling for main container
+    }
 
     const handleClick = (index) => { //index comes from .map
         setCurrent(index);
@@ -103,12 +117,20 @@ const WeatherCard = () => {
 
     useEffect(() => { //serperate useEffect to set and update our states without rendering api call again.
 
+        let T = localtime.toLocaleTimeString();
+
         if (weather && currentWeather) {
 
             if (d.getDate() === localtime.getDate()) { // using the date from (weekday) we check if the date coming from the api data is the same as present (todays)date 
                 sethourlyForecast(weather[current].hourly.slice(localtime.getHours())) //for the present day we show hourly forecast from current time onwards
             } else {
                 sethourlyForecast(weather[current].hourly.slice(0, 24));
+            }
+
+            if (T > weather[current].sunset || T < weather[current].sunrise) {
+                setBackgroundImage(img[1]);
+            } else {
+                setBackgroundImage(img[0]);
             }
 
             setweekday(weather[current].date); //gives us a date value we can pass into d 
@@ -134,7 +156,7 @@ const WeatherCard = () => {
 
     return (
 
-        <div className="w-card">
+        <div className="w-card" style={backGround}>
             {!weather && (
 
                 <div className="w-card__form">
