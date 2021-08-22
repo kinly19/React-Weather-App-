@@ -129,10 +129,8 @@ const WeatherCard = () => {
 
             if (T > weather[current].sunset || T < weather[current].sunrise) {
                 setBackgroundImage(img[1]);
-            }
-
-            if (T > weather[current].sunrise || T < weather[current].sunset) {
-                setBackgroundImage(img[0])
+            } else if (T > weather[current].sunrise || T < weather[current].sunset) {
+                setBackgroundImage(img[0]);
             }
 
             setweekday(weather[current].date); //gives us a date value we can pass into d 
