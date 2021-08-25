@@ -117,20 +117,13 @@ const WeatherCard = () => {
 
     useEffect(() => { //serperate useEffect to set and update our states without rendering api call again.
 
-        let T = localtime.toLocaleTimeString();
-
         if (weather && currentWeather) {
 
             if (d.getDate() === localtime.getDate()) { // using the date from (weekday) we check if the date coming from the api data is the same as present (todays)date 
                 sethourlyForecast(weather[current].hourly.slice(localtime.getHours())) //for the present day we show hourly forecast from current time onwards
+
             } else {
                 sethourlyForecast(weather[current].hourly.slice(0, 24));
-            }
-
-            if (T > weather[current].sunset || T < weather[current].sunrise) {
-                setBackgroundImage(img[1]);
-            } else if (T > weather[current].sunrise || T < weather[current].sunset) {
-                setBackgroundImage(img[0]);
             }
 
             setweekday(weather[current].date); //gives us a date value we can pass into d 
@@ -139,6 +132,25 @@ const WeatherCard = () => {
         }
 
     }, [weather, currentWeather, current, weekday]);
+
+    useEffect(() => { //To change background Image, depending on time of day between sunset and sunrise
+
+        if (weather) {
+
+            let T = localtime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });//show only hours and minutes
+            const sunset = `${parseInt(weather[current].sunset) + 12}:${weather[current].sunset.split(':')[1].replace('PM', '').replace(/\s/, '')}`//changes the time string value from 12hr format to 24hr format 
+            //we take the string value from weather[current].sunset and turn it into an interger so we can add 12 to change the string time format from 12hr to 24hr (8+12=20)
+            //then we build the string back up using split() and replace() methods, to choose and replace from what we need. eg (08:00 PM) parseInt(08:00 PM)=8+12=20 split(':')=[08, 00 PM] [1]replace(PM, '')removes "PM" replace(/\s\,'')removes white space. End result=(20:00)
+            const sunrise = weather[current].sunrise;
+
+            if (T > sunset || T < sunrise) {
+                setBackgroundImage(img[1]);
+            } else if (T > sunrise || T < sunset) {
+                setBackgroundImage(img[0]);
+            }
+        }
+
+    }, [weather]);
 
     useEffect(() => { //get current position of users location with Geolocation, using lat and long values to be passed into LocationKey()
 
