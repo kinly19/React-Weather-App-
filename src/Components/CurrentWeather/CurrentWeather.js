@@ -1,6 +1,12 @@
 import './CurrentWeather.scss'
+import CurrentWeatherItems from './CurrentWeatherItems';
 
 const CurrentWeather = ({ currentWeather, weather, handleCurrentInfo, current, lastUpdated, d }) => {
+  
+  const currentWeatherArr = Object.entries(weather[current]);//turn currentWeather into an array 
+  const weatherList1 = currentWeatherArr.slice(0, 7)
+  const weatherList2 = currentWeatherArr.slice(7, 12)
+
     return (
         <div className="cw">{/* currentWeather container top*/}
             <div className="cw__contentTop">
@@ -16,16 +22,24 @@ const CurrentWeather = ({ currentWeather, weather, handleCurrentInfo, current, l
                 <h2 className="cw__lastUpdate">Last updated {lastUpdated.toUTCString()}</h2>
             </div>
             <div className="cw__contentBottom"> {/* current weather container bottom*/}
-
-                <div className="cw__info"> {/* inner container*/}
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title"> Max</h2>
-                        <p className="cw__text">{weather[current].max}</p> {/*Weather */}
+          <div className="cw__info">
+            {weatherList1.map((currentInfo) => (
+              <CurrentWeatherItems
+                title={currentInfo[0]}
+                info={currentInfo[1]}
+                onCurrentInfo={handleCurrentInfo}
+              />
+            ))}
                     </div>
 
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title">Min</h2>
-                        <p className="cw__text">{weather[current].min}</p>
+          <div className="cw__info">
+            {weatherList2.map((currentInfo) => (
+              <CurrentWeatherItems
+                title={currentInfo[0]}
+                info={currentInfo[1]}
+                onCurrentInfo={handleCurrentInfo}
+              />
+            ))}
                     </div>
 
                     <div className="cw__infoItem">
@@ -37,52 +51,7 @@ const CurrentWeather = ({ currentWeather, weather, handleCurrentInfo, current, l
                         <h2 className="cw__title">Snow</h2>
                         <p className="cw__text">{weather[current].snow}%</p>
                     </div>
-
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title">UV</h2>
-                        <p className="cw__text">{weather[current].uv}</p>
-                    </div>
-
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title">Humidity</h2>
-                        <p className="cw__text">{handleCurrentInfo("humidity", "avghumidity")}%</p>
-                    </div>
-
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title">Feels like</h2>
-                        <p className="cw__text">{handleCurrentInfo("feelslike", "feelslike")}</p>
-                    </div>
-                </div>
-
-                <div className="cw__info">{/* inner container*/}
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title">Sunrise</h2>
-                        <p className="cw__text">{weather[current].sunrise}</p> {/*Weather */}
-                    </div>
-
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title">Sunset</h2>
-                        <p className="cw__text">{weather[current].sunset}</p>
-                    </div>
-
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title">Moonrise</h2>
-                        <p className="cw__text">{weather[current].moonrise}</p>
-                    </div>
-
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title">Moonset</h2>
-                        <p className="cw__text">{weather[current].moonset}</p>
-                    </div>
-
-                    <div className="cw__infoItem">
-                        <h2 className="cw__title">Moon phase</h2>
-                        <p className="cw__text">{weather[current].moonphrase}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+    );
 }
 
 export default CurrentWeather;
