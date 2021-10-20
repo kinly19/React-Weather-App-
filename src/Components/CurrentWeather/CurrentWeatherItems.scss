@@ -17,7 +17,6 @@
 @media only screen and (max-width: 33.125rem) {
   .currentInfo {
     padding: 1.5rem;
-    background: yellow; 
 
     &__title {
       font-size: 2.1rem;
@@ -30,7 +29,7 @@
   }
 }
 
-@media only screen and (max-width:20rem) {
+@media only screen and (max-width: 20rem) {
   .currentInfo {
     padding: 1rem;
 
