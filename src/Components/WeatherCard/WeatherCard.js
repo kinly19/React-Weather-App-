@@ -194,7 +194,7 @@ const WeatherCard = () => {
             setInputValue={setInputValue}
           />
         </div>
-      )};
+      )}
 
       {currentWeather && (
         <div className="w-card__main">
@@ -221,9 +221,9 @@ const WeatherCard = () => {
                     hourlyRain={hour.chance_of_rain}
                   />
                 );
-              })};
+              })}
             </div>
-          )};
+          )}
 
           <div className="w-card__sCard" onClick={ScrollToTop}>
             {weather.map((map, index) => {
@@ -242,10 +242,10 @@ const WeatherCard = () => {
                   dailyRain={map.rain}
                 />
               );
-            })};
+            })}
           </div>
         </div>
-      )};
+      )}
       <Footer />
     </div>
   );
