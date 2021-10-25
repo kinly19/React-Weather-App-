@@ -137,15 +137,15 @@ const WeatherCard = () => {
 
         if (weather) {
 
-            let T = localtime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });//show only hours and minutes
+            let TodaysTime = localtime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });//show only hours and minutes
             const sunset = `${parseInt(weather[current].sunset) + 12}:${weather[current].sunset.split(':')[1].replace('PM', '').replace(/\s/, '')}`//changes the time string value from 12hr format to 24hr format 
             //we take the string value from weather[current].sunset and turn it into an interger so we can add 12 to change the string time format from 12hr to 24hr (8+12=20)
             //then we build the string back up using split() and replace() methods, to choose and replace from what we need. eg (08:00 PM) parseInt(08:00 PM)=8+12=20 split(':')=[08, 00 PM] [1]replace(PM, '')removes "PM" replace(/\s\,'')removes white space. End result=(20:00)
             const sunrise = weather[current].sunrise;
 
-            if (T > sunset || T < sunrise) {
+            if (TodaysTime > sunset || TodaysTime < sunrise) {
                 setBackgroundImage(img[1]);
-            } else if (T > sunrise || T < sunset) {
+            } else if (TodaysTime > sunrise || TodaysTime < sunset) {
                 setBackgroundImage(img[0]);
             }
         }
