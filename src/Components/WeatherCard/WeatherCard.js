@@ -27,6 +27,7 @@ const WeatherCard = () => {
     let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date. 
     let localtime = new Date(); //we are going to use the local device time for splicing through an array
     let lastUpdated = new Date(lastUpdate);
+    const [isToday, setIsToday] = useState(false);
 
     const img = [
         MorningBeach,
@@ -77,23 +78,23 @@ const WeatherCard = () => {
                     setError(null)
                     setWeather(res.forecast.forecastday.map(fcd => { //daily weather info
                         return {
-                            date: fcd.date, //our object property values 
+                          max: Math.floor(fcd.day.maxtemp_c) + degreeSign,
                             min: Math.floor(fcd.day.mintemp_c) + degreeSign,
-                            max: Math.floor(fcd.day.maxtemp_c) + degreeSign,
-                            avg: Math.floor(fcd.day.avgtemp_c) + degreeSign,
-                            avghumidity: fcd.day.avghumidity,
-                            condition: fcd.day.condition.text,
+                          rain: `${fcd.day.daily_chance_of_rain}%`,
+                          snow: `${fcd.day.daily_chance_of_snow}%`,
                             uv: fcd.day.uv,
-                            rain: fcd.day.daily_chance_of_rain,
-                            snow: fcd.day.daily_chance_of_snow,
-                            icon: fcd.day.condition.icon,
-                            hourly: fcd.hour,
+                          humidity: isToday ? `${res.current.humidity}%`: `${fcd.day.avghumidity}%`, //this is making another api call. 
+                          feelslike: isToday ?  res.current.feelslike_c + degreeSign : "N/A",
                             sunrise: fcd.astro.sunrise,
                             sunset: fcd.astro.sunset,
                             moonrise: fcd.astro.moonrise,
                             moonset: fcd.astro.moonset,
                             moonphrase: fcd.astro.moon_phase,
-                            feelslike: "N/A"
+                          avg: Math.floor(fcd.day.avgtemp_c) + degreeSign,
+                          condition: fcd.day.condition.text,
+                          icon: fcd.day.condition.icon,
+                          hourly: fcd.hour,
+                          date: fcd.date, //our object property values 
                         }
                     }))
 
@@ -113,7 +114,7 @@ const WeatherCard = () => {
                 });
         }
 
-    }, [locationKey]);
+    }, [locationKey, isToday]);
 
     useEffect(() => { //serperate useEffect to set and update our states without rendering api call again.
 
