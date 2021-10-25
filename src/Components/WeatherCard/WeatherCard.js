@@ -50,12 +50,14 @@ const WeatherCard = () => {
         setInputValue("")//so form input value reverts back to blank
     }
 
-    const handleCurrentInfo = (currentVal, value) => { //return either current property values from api or values from forecastday[current]
+    const handleCurrentInfo = (currentForecastValue, dailyForecastValue) => { //return either current property values from api or values from forecastday[current]
         if (d.getDay() === localtime.getDay()) {
-            return currentWeather[currentVal];
+          setIsToday(true);
+          return currentWeather[currentForecastValue];
         } else {
-            return weather[current][value];
-        }
+          setIsToday(false);
+          return weather[current][dailyForecastValue];
+        };
     };
 
     const ScrollToTop = () => { //scroll back to top of page onClick
