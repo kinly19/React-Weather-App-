@@ -16,7 +16,7 @@ function App() {
   const [weather, setWeather] = useState(null); //api data object for daily forecaste
   const [currentWeather, setCurrentWeather] = useState(null); //api data object for current forecast
   const [weekday, setweekday] = useState(null); //res.forcaste.forecastday[current].date
-  const [lastUpdate, setLastUpdate] = useState(null); //show last updated time and date from res.current.last_updated
+ 
   const [current, setCurrent] = useState(0); //change the arrays index inside of res.forecast.forecasteday[current] when user selects between different days
   const [hourlyForecast, sethourlyForecast] = useState(null); // we will use this to show us the "hour" array inside of weather.hourly
 
@@ -35,11 +35,11 @@ function App() {
     "Saturday",
   ];
 
-  let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date.
-  let localtime = new Date(); //we are going to use the local device time for splicing through an array
-  let lastUpdated = new Date(lastUpdate);
-  const [isToday, setIsToday] = useState(false);
 
+  let d = new Date(weekday); // weekday = res.forecast.forecasteday[current].date
+  let localtime = new Date(); //we are going to use the local device time for splicing through an array
+  const [isToday, setIsToday] = useState(false);
+  
   const img = [MorningBeach, NightMountain];
   const [BackgroundImage, setBackgroundImage] = useState("");
   const backGround = {
@@ -62,7 +62,7 @@ function App() {
 
   const setTodayHandler = (status) => {
     setIsToday(status)
-    }
+  }
 
   const ScrollToTop = () => {
     //scroll back to top of page onClick
@@ -131,7 +131,6 @@ function App() {
         sethourlyForecast(weather[current].hourly.slice(0, 24));
       }
       setweekday(weather[current].date); //gives us a date value we can pass into d
-      setLastUpdate(currentWeather.lastupdate);
       ScrollToTop();
     }
   }, [weather, currentWeather, current, weekday]);
@@ -201,7 +200,6 @@ function App() {
               weather={weather}
               localtime={localtime}
               current={current}
-              lastUpdated={lastUpdated}
               d={d}
               onLastUpdate={data.current.last_updated}
               onToday={setTodayHandler}
