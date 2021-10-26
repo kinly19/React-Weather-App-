@@ -1,0 +1,52 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: rgb(62, 63, 63);
+}
+
+.current_forecast {
+  padding: 3% 10% 2% 10%;
+  overflow: hidden;
+
+  @media only screen and (max-width: 59.625rem) {
+    padding: 5rem 0 5rem 0;
+  }
+
+  @media only screen and (max-width: 33.125rem) {
+    padding-top: 0;
+  }
+}
+
+.hourly_forecast {
+  display: flex;
+  height: 25rem;
+  width: 80%;
+  overflow: scroll;
+  overflow-y: hidden;
+  margin-bottom: 3rem;
+
+  @media only screen and (max-width: 59.625rem) {
+    height: 32rem;
+    width: auto;
+    max-width: 80%;
+  }
+
+  @media only screen and (max-width: 33.125rem) {
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+.daily_forecast {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 5rem;
+
+  @media only screen and (max-width: 59.625rem) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
