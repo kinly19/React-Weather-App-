@@ -60,16 +60,9 @@ function App() {
     setInputValue(""); //form input value reverts back to empty
   };
 
-  const handleCurrentInfo = (currentForecastValue, dailyForecastValue) => {
-    //return either current forecast value or value from forecastday[current]
-    if (d.getDay() === localtime.getDay()) {
-      setIsToday(true);
-      return currentWeather[currentForecastValue];
-    } else {
-      setIsToday(false);
-      return weather[current][dailyForecastValue];
+  const setTodayHandler = (status) => {
+    setIsToday(status)
     }
-  };
 
   const ScrollToTop = () => {
     //scroll back to top of page onClick
@@ -206,10 +199,12 @@ function App() {
             <CurrentWeather
               currentWeather={currentWeather}
               weather={weather}
-              handleCurrentInfo={handleCurrentInfo}
+              localtime={localtime}
               current={current}
               lastUpdated={lastUpdated}
               d={d}
+              onLastUpdate={data.current.last_updated}
+              onToday={setTodayHandler}
             />
           </div>
 
