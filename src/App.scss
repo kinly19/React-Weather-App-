@@ -29,7 +29,8 @@
 .hourly_forecast {
   display: flex;
   height: 25rem;
-  width: 80%;
+  width: auto;
+  max-width: 80%;
   overflow: scroll;
   overflow-y: hidden;
   margin-bottom: 3rem;
