@@ -2,8 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  height: min-content;
   background-color: rgb(62, 63, 63);
+  background-size: cover;
+  background-position: center;
+
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: 1.1rem;
+  letter-spacing: 0.06rem;
 }
 
 .current_forecast {
