@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react';
 
-const useFetch = (url, isLocation) => {
+const useFetch = (url, isLocationEmpty) => {
 
   const [data, setData] = useState(null);
   const [error, setIsError] = useState(null);
 
   useEffect(() => {
-    if (isLocation) {
+    if (!isLocationEmpty) {
       fetch(url)
         .then((response) => {
           if (!response.ok) {
