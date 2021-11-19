@@ -21,7 +21,7 @@ function App() {
   const [hourlyForecast, sethourlyForecast] = useState(null); // we will use this to show us the "hour" array inside of weather.hourly
 
   const [locationKey, setLocationKey] = useState(""); //set api location
-  const [isLocationValid, setIsLocationValid] = useState(false);
+  const [isLocationKeyEmpty, setIsLocationKeyEmpty] = useState(true);
   const [inputValue, setInputValue] = useState(""); //this will take the users input value to setLocationKey(inputValue)
 
   const degreeSign = "\u00B0 C"; //unicode symbol
@@ -55,7 +55,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLocationValid(true);
+    setIsLocationKeyEmpty(false);
     setLocationKey(inputValue);
     setInputValue(""); //form input value reverts back to empty
   };
@@ -73,7 +73,7 @@ function App() {
   //custom hook
   const { data, error } = useFetch ( //pass error down to our form component
     `https://api.weatherapi.com/v1/forecast.json?key=ef6993d763d541b4812225535211807&q=${locationKey}&days=5&aqi=no&alerts=no`,
-    isLocationValid
+    isLocationKeyEmpty
   );
 
   useEffect(() => {
@@ -167,7 +167,7 @@ function App() {
     //get current position of users location with Geolocation, using lat and long values to be passed into LocationKey()
     const success = (position) => {
       const userPosition = position.coords;
-      setIsLocationValid(true);
+      setIsLocationKeyEmpty(false);
       setLocationKey(`${userPosition.latitude},${userPosition.longitude}`);
     };
 
@@ -178,7 +178,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" style={backGround}>
       {!weather && (
         <div className="forecast_form">
           <Form
