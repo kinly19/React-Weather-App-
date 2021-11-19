@@ -1,126 +1,122 @@
 .hourlyForecast {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
 
-   display: flex;
-   flex-direction: column;
-   flex-shrink: 0;
-   
-   border-radius: 10%;
-   margin: 1.3rem;
-   height: 19rem;
-   width: 23rem;
-   overflow: hidden;
+  border-radius: 10%;
+  margin: 1.3rem;
+  height: 19rem;
+  width: 23rem;
+  overflow: hidden;
 
-   text-align: center;
-   font-size: 1rem;
-   font-weight: 300;
-   line-height: 1.8rem;
-   letter-spacing: .1rem;
-   color: rgb(207, 207, 207);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8rem;
+  letter-spacing: 0.1rem;
+  color: rgb(207, 207, 207);
 
-   &:hover {
-        transform: scale(1.02);
-    }
-    transition: all ease-in-out .2s;
-     
-    &__contentTop { //top content container
+  &:hover {
+    transform: scale(1.02);
+  }
+  transition: all ease-in-out 0.2s;
 
-        background-color:#fbfcffb7;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        height: 100%;
-        padding: 3rem 1rem 1rem 1rem;
-        font-size: 2.5rem;
-        font-weight: 300;
-        line-height: 2.6rem;
-        color: #707070;
-    }
+  &__contentTop {
+    //top content container
 
-    &__hour {
+    background-color: #fbfcffb7;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    padding: 3rem 1rem 1rem 1rem;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 2.6rem;
+    color: #707070;
+  }
 
-        font-size: 3.8rem;
-        letter-spacing: .3rem;
-        font-weight: 300;
-        margin-bottom: 1rem;
-    }
+  &__hour {
+    font-size: 3.8rem;
+    letter-spacing: 0.3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
 
-    &__text {
-        font-size: 1.7rem;
-    }
+  &__text {
+    font-size: 1.7rem;
+  }
 
-    &__contentBottom { //bottom content container
+  &__contentBottom {
+    //bottom content container
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        background-color: rgba(34, 34, 34, 0.651);
-        height: 10rem; 
-        text-transform: uppercase;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: rgba(34, 34, 34, 0.651);
+    height: 10rem;
+    text-transform: uppercase;
+  }
 
-    &__info { //container
-       
-       padding: 1rem; 
-    }
+  &__info {
+    //container
 
-    &__infoTitle {
+    padding: 1rem;
+  }
 
-        font-size: 1.5rem;
-        font-weight: 400;
-        letter-spacing: .12rem;   
-    }
+  &__infoTitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.12rem;
+  }
 
-   &__infoText {
-      font-size: 1.5rem;
-      font-weight: 300;  
-   }
-   
+  &__infoText {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
 }
 
 @media only screen and (max-width: 59.625rem) {
-    
-    .hourlyForecast {
+  .hourlyForecast {
+    height: 30rem;
+    border-radius: 0;
+    margin: 2px;
 
-        height: 30rem;
-        border-radius: 0;
-        margin: 2px;
+    &__contentTop {
+      //top content container
 
-        &__contentTop { //top content container
-
-            justify-content: flex-start;
-            height: 20rem;
-            padding-top: 6rem;
-        }
-    
-        &__hour {
-            margin-bottom: 2rem;
-        }
-    
-        &__text {
-            font-size: 1.7rem;
-        }
-    
-        &__contentBottom { //bottom content container
-            height: 8rem; 
-        }
-    
-        &__info { //container 
-           padding: 2.5rem; 
-           line-height: 2.5rem;
-        }
-    
-        &__infoTitle {
-            font-size: 1.8rem;
-            letter-spacing: .12rem;   
-        }
-    
-       &__infoText {
-          font-size: 1.7rem;
-       }
- 
+      justify-content: flex-start;
+      height: 20rem;
+      padding-top: 6rem;
     }
+
+    &__hour {
+      margin-bottom: 2rem;
+    }
+
+    &__text {
+      font-size: 1.7rem;
+    }
+
+    &__contentBottom {
+      //bottom content container
+      height: 8rem;
+    }
+
+    &__info {
+      //container
+      padding: 2.5rem;
+      line-height: 2.5rem;
+    }
+
+    &__infoTitle {
+      font-size: 1.8rem;
+      letter-spacing: 0.12rem;
+    }
+
+    &__infoText {
+      font-size: 1.7rem;
+    }
+  }
 }
-
-
-
