@@ -3,20 +3,21 @@ import CurrentWeatherItems from './CurrentWeatherItems';
 
 const CurrentWeather = ({ currentWeather, weather, current, d, onLastUpdate, localtime, onToday}) => {
   
-  const currentWeatherArr = Object.entries(weather[current]);//turn currentWeather into an array 
-  const weatherList1 = currentWeatherArr.slice(0, 7)
-  const weatherList2 = currentWeatherArr.slice(7, 12)
-  const lastUpdate = new Date(onLastUpdate); //show last updated time and date from res.current.last_updated
+  const weatherArrayList = Object.entries(weather[current]);//turn currentWeather into an array 
+  const weatherList1 = weatherArrayList.slice(0, 7);
+  const weatherList2 = weatherArrayList.slice(7, 12);
 
-  const handleCurrentInfo = (currentForecastValue, dailyForecastValue) => {
-    //return either current forecast value or value from forecastday[current]
-    if (d.getDay() === localtime.getDay()) {
-      onToday(true);
-      return currentWeather[currentForecastValue];//bracket notation when passing in object names currentWeather["humidity"]
-    } else {
-      onToday(false);
-      return weather[current][dailyForecastValue];
-    };
+  const lastUpdate = new Date(onLastUpdate).toUTCString(); //show last updated time and date from res.current.last_updated
+  const date = d.toDateString();
+  const currentWeatherInfo = d.getDay() === localtime.getDay();
+  let temperature;
+
+  if (currentWeatherInfo){
+    temperature = currentWeather.temp
+    onToday(true);
+  } else {
+    temperature = weather[current].max
+    onToday(false);
   };
 
   return (
@@ -27,7 +28,7 @@ const CurrentWeather = ({ currentWeather, weather, current, d, onLastUpdate, loc
 
         <div className="cw__contentTd">
           <h1 className="cw__currentTemp">
-            {handleCurrentInfo("temp", "max")}
+            {temperature}
           </h1>
           <img
             className="cw__icon"
@@ -37,9 +38,9 @@ const CurrentWeather = ({ currentWeather, weather, current, d, onLastUpdate, loc
         </div>
 
         <h2 className="cw__condition">{weather[current].condition}</h2>
-        <h2 className="cw__weekday">{d.toDateString()}</h2>
+        <h2 className="cw__weekday">{date}</h2>
         <h2 className="cw__lastUpdate">
-          Last updated {lastUpdate.toUTCString()}
+          Last updated {lastUpdate}
         </h2>
       </div>
 
@@ -49,7 +50,6 @@ const CurrentWeather = ({ currentWeather, weather, current, d, onLastUpdate, loc
             <CurrentWeatherItems
               title={currentInfo[0]}
               info={currentInfo[1]}
-              onCurrentInfo={handleCurrentInfo}
             />
           ))}
         </div>
@@ -58,7 +58,6 @@ const CurrentWeather = ({ currentWeather, weather, current, d, onLastUpdate, loc
             <CurrentWeatherItems
               title={currentInfo[0]}
               info={currentInfo[1]}
-              onCurrentInfo={handleCurrentInfo}
             />
           ))}
         </div>
