@@ -228,6 +228,7 @@ function App() {
               const dayName = days[d.getDay()]; // we use the getDay() which would return the index of a day and we use that value to select in our days array what day to show :)
               return (
                 <DailyForecastSm
+                  key={index}
                   index={index} //index comes from the .map()
                   handleClick={handleClick}
                   dailyIcon={map.icon}

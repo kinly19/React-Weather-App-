@@ -46,16 +46,18 @@ const CurrentWeather = ({ currentWeather, weather, current, d, onLastUpdate, loc
 
       <div className="cw__contentBottom"> {/* current weather container bottom*/}
         <div className="cw__info">
-          {weatherList1.map((currentInfo) => (
+          {weatherList1.map((currentInfo, index) => (
             <CurrentWeatherItems
+              key={index}
               title={currentInfo[0]}
               info={currentInfo[1]}
             />
           ))}
         </div>
         <div className="cw__info">
-          {weatherList2.map((currentInfo) => (
+          {weatherList2.map((currentInfo, index) => (
             <CurrentWeatherItems
+              key={index}
               title={currentInfo[0]}
               info={currentInfo[1]}
             />
